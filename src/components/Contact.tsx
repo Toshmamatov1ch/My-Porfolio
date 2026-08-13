@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { Send, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
 
 export const Contact: React.FC = () => {
