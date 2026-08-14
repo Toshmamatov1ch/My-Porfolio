@@ -4,8 +4,8 @@ import { Code2, Cpu, Rocket } from "lucide-react";
 
 export const About: React.FC = () => {
   const stats = [
-    { label: "YILLIK TAJRIBA", value: "02+" },
-    { label: "MUVAFFAQIYATLI LOYIHALAR", value: "15+" },
+    { label: "YILLIK TAJRIBA", value: "08+" },
+    { label: "MUVAFFAQIYATLI LOYIHALAR", value: "61+" },
     { label: "MIJOZLAR MAMNUNIYATI", value: "100%" },
   ];
 
@@ -29,7 +29,7 @@ export const About: React.FC = () => {
           <span className="text-[#ff4d00] font-mono text-xs md:text-sm tracking-widest uppercase">
             // 01. HAQIMDA
           </span>
-          <div className="h-[1px] w-12 bg-[#ff4d00]/50" />
+          <div className="h-px w-12 bg-[#ff4d00]/50" />
         </div>
 
         {/* Main Grid Content */}

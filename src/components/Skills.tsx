@@ -110,12 +110,12 @@ export const Skills: React.FC = () => {
       </div>
 
       {/* Dark/Light gradient overlay to keep text readable */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 dark:from-[#0a0a0a] dark:via-[#0a0a0a]/80 to-transparent z-1 pointer-events-none transition-colors duration-300" />
+      <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 dark:from-[#0a0a0a] dark:via-[#0a0a0a]/80 to-transparent z-1 pointer-events-none transition-colors duration-300" />
 
       {/* Header Title */}
       <div className="relative z-10 max-w-7xl w-full mx-auto mb-12">
         <div className="flex items-center space-x-2 mb-4">
-          <div className="w-4 h-[2px] bg-[#ff4d00]" />
+          <div className="w-4 h-0.5 bg-[#ff4d00]" />
           <span className="text-[10px] font-mono tracking-widest text-[#ff4d00] uppercase">
             EKSPERTIZA VA IMKONIYATLAR
           </span>
@@ -160,7 +160,7 @@ export const Skills: React.FC = () => {
         </div>
 
         {/* Right Side: Skills Details Animated Cards */}
-        <div className="lg:col-span-8 bg-gray-50/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-2xl p-6 sm:p-10 min-h-[380px] flex flex-col justify-center transition-colors duration-300">
+        <div className="lg:col-span-8 bg-gray-50/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-2xl p-6 sm:p-10 min-h-95 flex flex-col justify-center transition-colors duration-300">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}

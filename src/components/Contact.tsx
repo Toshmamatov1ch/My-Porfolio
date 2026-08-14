@@ -35,7 +35,7 @@ export const Contact: React.FC = () => {
           <span className="text-[#ff4d00] font-mono text-xs md:text-sm tracking-widest uppercase">
             // 06. ALOQA
           </span>
-          <div className="h-[1px] w-12 bg-[#ff4d00]/50" />
+          <div className="h-px w-12 bg-[#ff4d00]/50" />
         </div>
 
         {/* Title */}

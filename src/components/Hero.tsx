@@ -25,7 +25,7 @@ export const Hero: React.FC = () => {
           className="w-full h-full object-cover opacity-85 dark:opacity-75 scale-105"
         />
         {/* Soft Gradient Overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/30 dark:from-[#0a0a0a]/90 dark:via-[#0a0a0a]/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-white/90 via-white/30 dark:from-[#0a0a0a]/90 dark:via-[#0a0a0a]/40 to-transparent" />
       </div>
 
       {/* Main Hero Center Content */}
@@ -38,7 +38,7 @@ export const Hero: React.FC = () => {
         >
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.95] text-gray-900 dark:text-white drop-shadow-md">
             DIYORBEK TOSHMAMATOV <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-[#ff4d00] dark:from-white dark:via-gray-300 dark:to-[#ff4d00]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-900 via-gray-700 to-[#ff4d00] dark:from-white dark:via-gray-300 dark:to-[#ff4d00]">
               FRONTEND DEVELOPER
             </span>
           </h1>
@@ -70,7 +70,7 @@ export const Hero: React.FC = () => {
         {/* O'zim haqimda / Missiya */}
         <div className="md:col-span-8 space-y-3">
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-[2px] bg-[#ff4d00]" />
+            <div className="w-4 h-0.5 bg-[#ff4d00]" />
             <span className="text-[10px] font-mono tracking-widest text-gray-700 dark:text-gray-300 uppercase font-semibold">
               FRONTEND ARCHITECTURE • TASHKENT
             </span>

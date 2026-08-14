@@ -66,12 +66,12 @@ export const FAQ: React.FC = () => {
       {/* Sticky Fullscreen Section */}
       <section className="sticky top-0 w-full h-screen bg-white dark:bg-black text-gray-900 dark:text-white px-8 md:px-20 flex flex-col justify-between py-10 overflow-hidden border-t border-gray-200 dark:border-white/10 transition-colors duration-300">
         {/* Subtle Background Glow */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#ff4d00]/5 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-[#ff4d00]/5 rounded-full blur-[160px] pointer-events-none" />
 
         {/* Top Header */}
         <div className="flex justify-between items-center z-10">
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-[2px] bg-[#ff4d00]" />
+            <div className="w-4 h-0.5 bg-[#ff4d00]" />
             <span className="text-[10px] font-mono tracking-widest text-gray-500 uppercase">
               FAQ
             </span>
@@ -114,7 +114,7 @@ export const FAQ: React.FC = () => {
           {/* Middle Column: Vertical Line & Indicator */}
           <div className="hidden lg:flex lg:col-span-2 h-full relative items-center justify-center">
             {/* Center Vertical Line */}
-            <div className="w-[1px] h-full bg-gray-200 dark:bg-white/10 relative">
+            <div className="w-px h-full bg-gray-200 dark:bg-white/10 relative">
               {/* Moving Indicator Circle */}
               <motion.div
                 className="absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full border border-[#ff4d00] bg-white dark:bg-black flex items-center justify-center shadow-sm"
@@ -131,7 +131,7 @@ export const FAQ: React.FC = () => {
           </div>
 
           {/* Right Column: Answers (Faded + Active) */}
-          <div className="lg:col-span-5 flex flex-col justify-center relative min-h-[300px]">
+          <div className="lg:col-span-5 flex flex-col justify-center relative min-h-75">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}

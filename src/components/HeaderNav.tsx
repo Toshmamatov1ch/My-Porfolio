@@ -71,7 +71,7 @@ export const HeaderNav: React.FC = () => {
     <>
       {/* 1. TOP FIXED BAR (Menu yopiq bo'lgandagina ko'rinadi) */}
       {!isOpen && (
-        <header className="fixed top-0 left-0 w-full z-[990] flex justify-between items-center px-6 md:px-12 py-6 pointer-events-none transition-opacity duration-300">
+        <header className="fixed top-0 left-0 w-full z-990 flex justify-between items-center px-6 md:px-12 py-6 pointer-events-none transition-opacity duration-300">
           <div className="flex items-center space-x-3 pointer-events-auto bg-white/80 dark:bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-gray-200 dark:border-white/10 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#ff4d00] animate-ping" />
             <span className="text-xs md:text-sm text-gray-900 dark:text-white font-mono uppercase tracking-wider font-semibold">
@@ -88,7 +88,7 @@ export const HeaderNav: React.FC = () => {
       )}
 
       {/* BURGER MENU & THEME TOGGLE BUTTONS CONTAINER */}
-      <div className="fixed top-6 right-6 md:right-12 z-[999] flex items-center space-x-3">
+      <div className="fixed top-6 right-6 md:right-12 z-999 flex items-center space-x-3">
         {/* Tema almashtiruvchi tugma */}
         <button
           onClick={toggleTheme}
@@ -110,8 +110,8 @@ export const HeaderNav: React.FC = () => {
 
       {/* 2. RIGHT FIXED RULER */}
       {!isOpen && (
-        <aside className="fixed right-6 md:right-12 top-24 bottom-8 z-[980] hidden sm:flex flex-col justify-between items-end select-none pointer-events-auto transition-opacity duration-300">
-          <div className="text-[#ff4d00] text-[10px] font-mono animate-pulse pr-[2px]">
+        <aside className="fixed right-6 md:right-12 top-24 bottom-8 z-980 hidden sm:flex flex-col justify-between items-end select-none pointer-events-auto transition-opacity duration-300">
+          <div className="text-[#ff4d00] text-[10px] font-mono animate-pulse pr-0.5">
             ▲
           </div>
 
@@ -140,7 +140,7 @@ export const HeaderNav: React.FC = () => {
                     </span>
 
                     <div
-                      className={`h-[1px] transition-all duration-300 ${
+                      className={`h-px transition-all duration-300 ${
                         isActive
                           ? "w-5 bg-[#ff4d00] shadow-[0_0_8px_#ff4d00]"
                           : "w-2.5 bg-zinc-300 dark:bg-zinc-800 group-hover:bg-zinc-500"
@@ -150,8 +150,8 @@ export const HeaderNav: React.FC = () => {
 
                   {index < sections.length - 1 && (
                     <div className="flex flex-col justify-around items-end flex-1 my-0.5 opacity-25">
-                      <div className="w-1.5 h-[1px] bg-zinc-400 dark:bg-zinc-700" />
-                      <div className="w-1.5 h-[1px] bg-zinc-400 dark:bg-zinc-700" />
+                      <div className="w-1.5 h-px bg-zinc-400 dark:bg-zinc-700" />
+                      <div className="w-1.5 h-px bg-zinc-400 dark:bg-zinc-700" />
                     </div>
                   )}
                 </React.Fragment>
@@ -159,7 +159,7 @@ export const HeaderNav: React.FC = () => {
             })}
           </div>
 
-          <div className="text-zinc-500 dark:text-zinc-600 text-[9px] font-mono pr-[2px]">
+          <div className="text-zinc-500 dark:text-zinc-600 text-[9px] font-mono pr-0.5">
             ▼
           </div>
         </aside>
@@ -173,7 +173,7 @@ export const HeaderNav: React.FC = () => {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[985] bg-white dark:bg-[#0d0d0d] text-gray-900 dark:text-white flex flex-col justify-between p-8 md:p-16 pt-28 transition-colors duration-300"
+            className="fixed inset-0 z-985 bg-white dark:bg-[#0d0d0d] text-gray-900 dark:text-white flex flex-col justify-between p-8 md:p-16 pt-28 transition-colors duration-300"
           >
             <div className="flex justify-between items-center border-b border-gray-200 dark:border-white/10 pb-4 text-xs font-mono uppercase tracking-widest text-gray-500 dark:text-gray-400">
               <span className="font-bold text-gray-900 dark:text-white">

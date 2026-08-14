@@ -71,7 +71,7 @@ export const Projects: React.FC = () => {
       <div className="max-w-7xl w-full mx-auto">
         {/* Small Tagline */}
         <div className="flex items-center space-x-2 mb-6">
-          <div className="w-4 h-[2px] bg-[#ff4d00]" />
+          <div className="w-4 h-0.5 bg-[#ff4d00]" />
           <span className="text-[10px] font-mono tracking-widest text-gray-500 dark:text-gray-400 uppercase">
             ISHLARIMIZ
           </span>
@@ -93,7 +93,7 @@ export const Projects: React.FC = () => {
 
             <div className="flex items-center space-x-3 text-xs font-mono text-gray-500 pt-4">
               <span>ISHLAR</span>
-              <div className="w-12 h-[1px] bg-gray-300 dark:bg-gray-700" />
+              <div className="w-12 h-px bg-gray-300 dark:bg-gray-700" />
               <span>02 / 08</span>
             </div>
           </div>
@@ -116,7 +116,7 @@ export const Projects: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`flex-none w-[280px] sm:w-[350px] h-[450px] rounded-2xl bg-gradient-to-b ${project.gradient} p-8 flex flex-col justify-end shadow-2xl relative group overflow-hidden border border-gray-200 dark:border-white/10 cursor-pointer`}
+            className={`flex-none w-70 sm:w-87.5 h-112.5 rounded-2xl bg-linear-to-b ${project.gradient} p-8 flex flex-col justify-end shadow-2xl relative group overflow-hidden border border-gray-200 dark:border-white/10 cursor-pointer`}
           >
             {/* Loyiha Rasmi (Hover paytida ochiladi va kattalashadi) */}
             <div className="absolute inset-0 z-0 overflow-hidden">
@@ -126,7 +126,7 @@ export const Projects: React.FC = () => {
                 className="w-full h-full object-cover opacity-0 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 ease-out"
               />
               {/* Qoramtir gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-linaer-to-t from-black via-black/60 to-transparent opacity-90" />
             </div>
 
             {/* Card Content */}

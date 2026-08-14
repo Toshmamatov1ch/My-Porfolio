@@ -89,7 +89,7 @@ export const GlobeTestimonials: React.FC = () => {
       {/* Header Title */}
       <div className="relative z-10 max-w-7xl w-full mx-auto">
         <div className="flex items-center space-x-2 mb-4">
-          <div className="w-4 h-[2px] bg-[#ff4d00]" />
+          <div className="w-4 h-0.5 bg-[#ff4d00]" />
           <span className="text-[10px] font-mono tracking-widest text-[#ff4d00] uppercase">
             GEOGRAFIK MIJOZLAR
           </span>
@@ -102,7 +102,7 @@ export const GlobeTestimonials: React.FC = () => {
       {/* Main Content Area */}
       <div className="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto pt-6">
         {/* Left Side: 3D Globe (Kichraytirilgan va yozuvdan pastroqda) */}
-        <div className="lg:col-span-7 h-[380px] sm:h-[480px] flex items-center justify-center relative">
+        <div className="lg:col-span-7 h-95 sm:h-120 flex items-center justify-center relative">
           <div className="w-full h-full cursor-grab active:cursor-grabbing flex items-center justify-center">
             <Globe
               ref={globeRef}
