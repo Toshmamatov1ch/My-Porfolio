@@ -12,7 +12,7 @@ import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Project";
-import { Testimonials } from "./components/Testimonials";
+import { GlobeTestimonials } from "./components/GlobeTestimonials";
 import { FAQ } from "./components/FAQ";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
@@ -27,16 +27,16 @@ const ProtectedRoute = () => {
   return isAdmin ? <Outlet /> : <Navigate to="/admin/login" replace />;
 };
 
-// Asosiy Sayt Layouti
+// Asosiy Sayt Layouti (Dinamik rejimlar bilan yangilandi)
 const MainLayout = () => (
-  <div className="min-h-screen bg-black text-white font-sans relative">
+  <div className="min-h-screen bg-white dark:bg-[#070707] text-gray-900 dark:text-white font-sans relative transition-colors duration-300">
     <HeaderNav />
     <main>
       <Hero />
       <About />
       <Skills />
       <Projects />
-      <Testimonials />
+      <GlobeTestimonials />
       <FAQ />
       <Contact />
       <Outlet />

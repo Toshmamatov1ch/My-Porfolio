@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext"; // Yo'lini o'zingizga moslang
 
 interface Section {
   id: string;
@@ -25,6 +26,7 @@ const sections: Section[] = [
 export const HeaderNav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,29 +72,41 @@ export const HeaderNav: React.FC = () => {
       {/* 1. TOP FIXED BAR (Menu yopiq bo'lgandagina ko'rinadi) */}
       {!isOpen && (
         <header className="fixed top-0 left-0 w-full z-[990] flex justify-between items-center px-6 md:px-12 py-6 pointer-events-none transition-opacity duration-300">
-          <div className="flex items-center space-x-3 pointer-events-auto bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+          <div className="flex items-center space-x-3 pointer-events-auto bg-white/80 dark:bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-gray-200 dark:border-white/10 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#ff4d00] animate-ping" />
-            <span className="text-xs md:text-sm text-white font-mono uppercase tracking-wider font-semibold">
+            <span className="text-xs md:text-sm text-gray-900 dark:text-white font-mono uppercase tracking-wider font-semibold">
               DIYORBEK TOSHMAMATOV — FRONTEND DEVELOPER
             </span>
           </div>
 
           <div className="flex items-center space-x-6 pointer-events-auto">
-            <span className="hidden md:block font-mono text-xs text-gray-400 tracking-widest uppercase">
+            <span className="hidden md:block font-mono text-xs text-gray-500 dark:text-gray-400 tracking-widest uppercase">
               TASHKENT, UZBEKISTAN
             </span>
           </div>
         </header>
       )}
 
-      {/* BURGER MENU BUTTON */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 right-6 md:right-12 z-[999] w-12 h-12 rounded-full border border-white/20 bg-black/60 backdrop-blur-md flex items-center justify-center text-white hover:border-[#ff4d00] hover:text-[#ff4d00] transition-all duration-300 shadow-2xl cursor-pointer"
-        aria-label="Toggle Menu"
-      >
-        {isOpen ? <X size={20} /> : <Menu size={20} />}
-      </button>
+      {/* BURGER MENU & THEME TOGGLE BUTTONS CONTAINER */}
+      <div className="fixed top-6 right-6 md:right-12 z-[999] flex items-center space-x-3">
+        {/* Tema almashtiruvchi tugma */}
+        <button
+          onClick={toggleTheme}
+          className="w-12 h-12 rounded-full border border-gray-300 dark:border-white/25 bg-white/80 dark:bg-black/60 backdrop-blur-md flex items-center justify-center text-gray-900 dark:text-white hover:border-[#ff4d00] hover:text-[#ff4d00] transition-all duration-300 shadow-xl cursor-pointer"
+          aria-label="Toggle Theme"
+        >
+          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+
+        {/* Burger Menu Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-12 h-12 rounded-full border border-gray-300 dark:border-white/25 bg-white/80 dark:bg-black/60 backdrop-blur-md flex items-center justify-center text-gray-900 dark:text-white hover:border-[#ff4d00] hover:text-[#ff4d00] transition-all duration-300 shadow-xl cursor-pointer"
+          aria-label="Toggle Menu"
+        >
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
 
       {/* 2. RIGHT FIXED RULER */}
       {!isOpen && (
@@ -119,7 +133,7 @@ export const HeaderNav: React.FC = () => {
                       className={`transition-all duration-300 ${
                         isActive
                           ? "text-[#ff4d00] font-bold scale-110 drop-shadow-[0_0_8px_rgba(255,77,0,0.8)]"
-                          : "text-zinc-600 group-hover:text-zinc-300"
+                          : "text-zinc-500 dark:text-zinc-600 group-hover:text-zinc-800 dark:group-hover:text-zinc-300"
                       }`}
                     >
                       {sec.number}
@@ -129,15 +143,15 @@ export const HeaderNav: React.FC = () => {
                       className={`h-[1px] transition-all duration-300 ${
                         isActive
                           ? "w-5 bg-[#ff4d00] shadow-[0_0_8px_#ff4d00]"
-                          : "w-2.5 bg-zinc-800 group-hover:bg-zinc-500"
+                          : "w-2.5 bg-zinc-300 dark:bg-zinc-800 group-hover:bg-zinc-500"
                       }`}
                     />
                   </div>
 
                   {index < sections.length - 1 && (
                     <div className="flex flex-col justify-around items-end flex-1 my-0.5 opacity-25">
-                      <div className="w-1.5 h-[1px] bg-zinc-700" />
-                      <div className="w-1.5 h-[1px] bg-zinc-700" />
+                      <div className="w-1.5 h-[1px] bg-zinc-400 dark:bg-zinc-700" />
+                      <div className="w-1.5 h-[1px] bg-zinc-400 dark:bg-zinc-700" />
                     </div>
                   )}
                 </React.Fragment>
@@ -145,7 +159,9 @@ export const HeaderNav: React.FC = () => {
             })}
           </div>
 
-          <div className="text-zinc-600 text-[9px] font-mono pr-[2px]">▼</div>
+          <div className="text-zinc-500 dark:text-zinc-600 text-[9px] font-mono pr-[2px]">
+            ▼
+          </div>
         </aside>
       )}
 
@@ -157,11 +173,13 @@ export const HeaderNav: React.FC = () => {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[985] bg-[#0d0d0d] text-white flex flex-col justify-between p-8 md:p-16 pt-28"
+            className="fixed inset-0 z-[985] bg-white dark:bg-[#0d0d0d] text-gray-900 dark:text-white flex flex-col justify-between p-8 md:p-16 pt-28 transition-colors duration-300"
           >
-            <div className="flex justify-between items-center border-b border-white/10 pb-4 text-xs font-mono uppercase tracking-widest text-gray-400">
-              <span className="font-bold text-white">DIYORBEK.DEV</span>
-              <span className="pr-16">NAVIGATSIYA</span>
+            <div className="flex justify-between items-center border-b border-gray-200 dark:border-white/10 pb-4 text-xs font-mono uppercase tracking-widest text-gray-500 dark:text-gray-400">
+              <span className="font-bold text-gray-900 dark:text-white">
+                DIYORBEK.DEV
+              </span>
+              <span className="pr-24">NAVIGATSIYA</span>
             </div>
 
             <div className="my-auto flex flex-col space-y-4">
@@ -179,7 +197,7 @@ export const HeaderNav: React.FC = () => {
                         onClick={() => setIsOpen(false)}
                         className="group flex items-baseline space-x-4 text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight hover:text-[#ff4d00] transition-colors w-fit"
                       >
-                        <span className="text-xs sm:text-sm font-mono text-gray-500 group-hover:text-[#ff4d00]">
+                        <span className="text-xs sm:text-sm font-mono text-gray-400 dark:text-gray-500 group-hover:text-[#ff4d00]">
                           {link.number}
                         </span>
                         <span>{link.name}</span>
@@ -202,7 +220,7 @@ export const HeaderNav: React.FC = () => {
                       }}
                       className="group flex items-baseline space-x-4 text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight hover:text-[#ff4d00] transition-colors w-fit text-left cursor-pointer"
                     >
-                      <span className="text-xs sm:text-sm font-mono text-gray-500 group-hover:text-[#ff4d00]">
+                      <span className="text-xs sm:text-sm font-mono text-gray-400 dark:text-gray-500 group-hover:text-[#ff4d00]">
                         {link.number}
                       </span>
                       <span>{link.name}</span>
@@ -212,9 +230,9 @@ export const HeaderNav: React.FC = () => {
               })}
             </div>
 
-            <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div className="pt-6 border-t border-gray-200 dark:border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div>
-                <span className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
+                <span className="block text-xs font-mono text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-1">
                   ALOQA
                 </span>
                 <a
@@ -230,7 +248,7 @@ export const HeaderNav: React.FC = () => {
                   setIsOpen(false);
                   scrollToSection("contact");
                 }}
-                className="inline-flex items-center space-x-2 bg-[#ff4d00] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-white hover:text-black transition-colors cursor-pointer"
+                className="inline-flex items-center space-x-2 bg-[#ff4d00] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-gray-900 dark:hover:bg-white dark:hover:text-black transition-colors cursor-pointer"
               >
                 <span>LOYIHA BOSHLASH</span>
                 <ArrowUpRight className="w-4 h-4" />

@@ -59,9 +59,12 @@ export const FAQ: React.FC = () => {
   }, [scrollYProgress, faqData.length]);
 
   return (
-    <div ref={containerRef} className="relative w-full h-[400vh] bg-black">
+    <div
+      ref={containerRef}
+      className="relative w-full h-[400vh] bg-white dark:bg-black transition-colors duration-300"
+    >
       {/* Sticky Fullscreen Section */}
-      <section className="sticky top-0 w-full h-screen bg-black text-white px-8 md:px-20 flex flex-col justify-between py-10 overflow-hidden border-t border-white/10">
+      <section className="sticky top-0 w-full h-screen bg-white dark:bg-black text-gray-900 dark:text-white px-8 md:px-20 flex flex-col justify-between py-10 overflow-hidden border-t border-gray-200 dark:border-white/10 transition-colors duration-300">
         {/* Subtle Background Glow */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#ff4d00]/5 rounded-full blur-[160px] pointer-events-none" />
 
@@ -90,15 +93,15 @@ export const FAQ: React.FC = () => {
                   className="cursor-pointer transition-all duration-500 ease-out select-none"
                 >
                   <span
-                    className={`block text-[10px] font-mono mb-1 transition-colors duration-300 ${isActive ? "text-[#ff4d00]" : "text-gray-600"}`}
+                    className={`block text-[10px] font-mono mb-1 transition-colors duration-300 ${isActive ? "text-[#ff4d00]" : "text-gray-400 dark:text-gray-600"}`}
                   >
                     {item.number}
                   </span>
                   <h3
                     className={`text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight transition-all duration-500 ${
                       isActive
-                        ? "text-white opacity-100 scale-100 translate-x-0"
-                        : "text-gray-600 opacity-20 hover:opacity-40 -translate-x-2"
+                        ? "text-gray-900 dark:text-white opacity-100 scale-100 translate-x-0"
+                        : "text-gray-400 dark:text-gray-600 opacity-40 hover:opacity-70 dark:hover:opacity-40 -translate-x-2"
                     }`}
                   >
                     {item.question}
@@ -111,10 +114,10 @@ export const FAQ: React.FC = () => {
           {/* Middle Column: Vertical Line & Indicator */}
           <div className="hidden lg:flex lg:col-span-2 h-full relative items-center justify-center">
             {/* Center Vertical Line */}
-            <div className="w-[1px] h-full bg-white/10 relative">
+            <div className="w-[1px] h-full bg-gray-200 dark:bg-white/10 relative">
               {/* Moving Indicator Circle */}
               <motion.div
-                className="absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full border border-[#ff4d00] bg-black flex items-center justify-center"
+                className="absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full border border-[#ff4d00] bg-white dark:bg-black flex items-center justify-center shadow-sm"
                 animate={{
                   top: `${(activeIndex / (faqData.length - 1)) * 80 + 10}%`,
                 }}
@@ -141,7 +144,7 @@ export const FAQ: React.FC = () => {
                 <span className="text-[10px] font-mono text-[#ff4d00] tracking-widest block">
                   {faqData[activeIndex].number}
                 </span>
-                <p className="text-base sm:text-lg md:text-xl font-light text-gray-300 leading-relaxed max-w-md">
+                <p className="text-base sm:text-lg md:text-xl font-light text-gray-600 dark:text-gray-300 leading-relaxed max-w-md">
                   {faqData[activeIndex].answer}
                 </p>
               </motion.div>
@@ -150,7 +153,7 @@ export const FAQ: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex items-center justify-between text-[10px] font-mono text-gray-600 border-t border-white/5 pt-4 z-10">
+        <div className="flex items-center justify-between text-[10px] font-mono text-gray-500 border-t border-gray-200 dark:border-white/5 pt-4 z-10">
           <span>SCROLL TO EXPLORE FAQ</span>
           <span className="text-[#ff4d00]">01</span>
         </div>

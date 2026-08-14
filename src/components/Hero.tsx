@@ -1,89 +1,103 @@
 import React from "react";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export const Hero: React.FC = () => {
+  const slidingWords = [
+    "Diyorbek Toshmamatov",
+    "Frontend Developer",
+    "Grafik dizayn",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Awwwards",
+    "UI/UX Design",
+    "Standalone React",
+  ];
+
   return (
-    <section
-      id="home"
-      className="relative w-full h-screen bg-black overflow-hidden flex flex-col justify-between pt-28 pb-8 px-6 md:px-12"
-    >
-      {/* Background Cloud Animations */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{
-            x: [-100, 150, -100],
-            y: [-30, 60, -30],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-10 -left-10 w-[500px] h-[500px] bg-gradient-to-r from-orange-500/35 via-amber-600/25 to-transparent rounded-full blur-[70px]"
+    <section className="relative w-full min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white flex flex-col justify-between px-6 md:px-16 py-8 overflow-hidden transition-colors duration-300">
+      {/* Background Image with High Opacity */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80"
+          alt="Foggy Mountains Background"
+          className="w-full h-full object-cover opacity-85 dark:opacity-75 scale-105"
         />
-
-        <motion.div
-          animate={{
-            x: [100, -150, 100],
-            y: [40, -50, 40],
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 -right-10 w-[600px] h-[600px] bg-gradient-to-l from-orange-600/30 via-rose-500/20 to-transparent rounded-full blur-[80px]"
-        />
-
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-            backgroundSize: "30px 30px",
-          }}
-        />
+        {/* Soft Gradient Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/30 dark:from-[#0a0a0a]/90 dark:via-[#0a0a0a]/40 to-transparent" />
       </div>
 
-      {/* Hero Title */}
-      <div className="relative z-10 my-auto text-center md:text-left">
-        <motion.h1
+      {/* Main Hero Center Content */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto py-12 space-y-8">
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl sm:text-7xl lg:text-9xl font-black uppercase tracking-tight text-white leading-none drop-shadow-2xl"
+          className="max-w-5xl"
         >
-          RAQAMLI <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-600">
-            KELAJAKNI
-          </span>{" "}
-          <br />
-          <span className="text-[#ff4d00]">YARATAMIZ</span>
-        </motion.h1>
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.95] text-gray-900 dark:text-white drop-shadow-md">
+            DIYORBEK TOSHMAMATOV <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-[#ff4d00] dark:from-white dark:via-gray-300 dark:to-[#ff4d00]">
+              FRONTEND DEVELOPER
+            </span>
+          </h1>
+        </motion.div>
+
+        {/* Chapdan o'ngga suzib o'tuvchi so'zlar (Marquee) */}
+        <div className="w-full overflow-hidden whitespace-nowrap py-2 border-y border-gray-300/30 dark:border-white/10 backdrop-blur-sm">
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+            className="inline-flex space-x-8 items-center"
+          >
+            {[...slidingWords, ...slidingWords, ...slidingWords].map(
+              (word, index) => (
+                <div key={index} className="flex items-center space-x-8">
+                  <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-gray-700 dark:text-gray-300 font-semibold">
+                    {word}
+                  </span>
+                  <span className="w-2 h-2 rounded-full bg-[#ff4d00]" />
+                </div>
+              ),
+            )}
+          </motion.div>
+        </div>
       </div>
 
-      {/* Bottom Info Bar */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
-        <div className="space-y-2">
-          <div className="text-xs font-mono text-[#ff4d00] tracking-widest uppercase">
-            // BIZNING MISSIYAMIZ
+      {/* Bottom Footer Info & CTA */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
+        {/* O'zim haqimda / Missiya */}
+        <div className="md:col-span-8 space-y-3">
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-[2px] bg-[#ff4d00]" />
+            <span className="text-[10px] font-mono tracking-widest text-gray-700 dark:text-gray-300 uppercase font-semibold">
+              FRONTEND ARCHITECTURE • TASHKENT
+            </span>
           </div>
-          <p className="text-sm text-gray-300 max-w-sm font-light leading-relaxed">
-            G'oyalarni React va zamonaviy web texnologiyalari yordamida tezgina
-            interaktiv hamda chiroyli yechimlarga aylantiramiz.
-          </p>
+          <div>
+            <h3 className="text-xs font-mono uppercase tracking-wider font-bold text-gray-900 dark:text-white mb-1">
+              O'ZIM HAQIMDA
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 font-sans max-w-xl leading-relaxed font-medium">
+              Standalone React, TypeScript va Tailwind yordamida zamonaviy, tez
+              ishlaydigan va Awwwards darajasidagi veb-ilovalar yarataman. Kodni
+              o'zim qo'lda yozishni va mukammal natijaga erishishni yoqtiraman.
+            </p>
+          </div>
         </div>
 
-        <div className="hidden md:flex flex-col items-center justify-center space-y-2">
-          <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">
-            PASTGA AYLANTRING
-          </span>
-          <ArrowDown className="w-4 h-4 text-[#ff4d00] animate-bounce" />
-        </div>
-
-        <div className="flex justify-start md:justify-end">
-          <a
-            href="#contact"
-            className="group inline-flex items-center space-x-3 bg-white text-black px-6 py-3.5 rounded-full font-semibold text-sm hover:bg-[#ff4d00] hover:text-white transition-all duration-300 shadow-lg"
+        {/* Action Button */}
+        <div className="md:col-span-4 flex flex-col md:items-end justify-end space-y-6">
+          <motion.a
+            href="#projects"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center space-x-3 bg-gray-900 dark:bg-white text-white dark:text-black px-6 py-4 rounded-full font-bold text-xs uppercase tracking-wider shadow-lg hover:bg-[#ff4d00] dark:hover:bg-[#ff4d00] dark:hover:text-white transition-all duration-300 cursor-pointer"
           >
             <span>BIZ BILAN ISHLANG</span>
-            <div className="w-7 h-7 rounded-full bg-black text-white group-hover:bg-white group-hover:text-black flex items-center justify-center transition-colors">
-              <ArrowUpRight className="w-4 h-4" />
-            </div>
-          </a>
+            <ArrowRight className="w-4 h-4" />
+          </motion.a>
         </div>
       </div>
     </section>

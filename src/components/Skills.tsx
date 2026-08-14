@@ -1,221 +1,202 @@
-import React, { useState, useRef, useEffect } from "react";
-import { motion, useScroll, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Spline from "@splinetool/react-spline";
+import {
+  Code2,
+  Layout,
+  Cpu,
+  Globe,
+  Server,
+  Database,
+  CpuIcon,
+} from "lucide-react";
 
-interface StepItem {
+interface SkillCategory {
   id: string;
-  number: string;
   title: string;
-  subtitle: string;
-  description: string;
+  icon: React.ReactNode;
+  skills: { name: string; level: string; desc: string }[];
 }
 
+const skillCategories: SkillCategory[] = [
+  {
+    id: "frontend",
+    title: "Frontend Development",
+    icon: <Layout className="w-5 h-5 text-[#ff4d00]" />,
+    skills: [
+      {
+        name: "React",
+        level: "95%",
+        desc: "Standalone React, Hooks, Context API",
+      },
+      {
+        name: "TypeScript",
+        level: "90%",
+        desc: "Type safety, Interfaces, Generics",
+      },
+      {
+        name: "Tailwind CSS",
+        level: "98%",
+        desc: "Modern styling, responsive layouts",
+      },
+      {
+        name: "JavaScript (ES6+)",
+        level: "95%",
+        desc: "Asynchronous JS, DOM manipulation",
+      },
+    ],
+  },
+  {
+    id: "animation",
+    title: "Animations & 3D",
+    icon: <Cpu className="w-5 h-5 text-[#ff4d00]" />,
+    skills: [
+      {
+        name: "Framer Motion",
+        level: "90%",
+        desc: "Complex page transitions & gestures",
+      },
+      {
+        name: "Spline 3D",
+        level: "85%",
+        desc: "Interactive 3D web scenes integration",
+      },
+      {
+        name: "CSS Animations",
+        level: "92%",
+        desc: "Keyframes, smooth transitions",
+      },
+    ],
+  },
+  {
+    id: "tools",
+    title: "Tools & Workflow",
+    icon: <Globe className="w-5 h-5 text-[#ff4d00]" />,
+    skills: [
+      {
+        name: "Git & GitHub",
+        level: "90%",
+        desc: "Version control, collaboration",
+      },
+      {
+        name: "Vite / Netlify",
+        level: "92%",
+        desc: "Fast bundling, continuous deployment",
+      },
+      {
+        name: "ClickUp / Task Manager",
+        level: "95%",
+        desc: "Project tracking & productivity",
+      },
+    ],
+  },
+];
+
 export const Skills: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(1); // 02-bosqichdan boshlanadi
+  const [activeTab, setActiveTab] = useState<string>("frontend");
 
-  const stepsData: StepItem[] = [
-    {
-      id: "1",
-      number: "01",
-      title: "TAHLIL VA STRATEGIYA",
-      subtitle: "Loyiha maqsadlari va arxitekturani rejalashtirish",
-      description:
-        "Biznesingiz ehtiyojlarini o'rganamiz va eng to'g'ri raqamli yechimni shakllantiramiz.",
-    },
-    {
-      id: "2",
-      number: "02",
-      title: "PROTOTIP VA UI/UX",
-      subtitle: "Interfeys dizayni va foydalanuvchi tajribasi",
-      description:
-        "Awwwards darajasidagi minimalist, futuristik va qulay vizual interfeys tayyorlaymiz.",
-    },
-    {
-      id: "3",
-      number: "03",
-      title: "DASTURLASH",
-      subtitle: "Frontend va backend tizimini qurish",
-      description:
-        "Zamonaviy React va TypeScript yordamida tezkor hamda xavfsiz kod bazasini yozamiz.",
-    },
-    {
-      id: "4",
-      number: "04",
-      title: "OPTIMIZATSIYA",
-      subtitle: "Tezlik, SEO va animatsiyalarni sozlash",
-      description:
-        "Sayt va platformaning barcha qurilmalarda tez va silliq ishlashini ta'minlaymiz.",
-    },
-  ];
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (v) => {
-      const total = stepsData.length;
-      const step = 1 / total;
-      const index = Math.min(Math.floor(v / step), total - 1);
-      setActiveIndex(index);
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress, stepsData.length]);
-
-  const activeStep = stepsData[activeIndex];
-
-  // Oldingi va keyingi bosqichlar
-  const getPrevIndex = () =>
-    activeIndex > 0 ? activeIndex - 1 : stepsData.length - 1;
-  const getNextIndex = () =>
-    activeIndex < stepsData.length - 1 ? activeIndex + 1 : 0;
+  const currentCategory =
+    skillCategories.find((cat) => cat.id === activeTab) || skillCategories[0];
 
   return (
-    <div ref={containerRef} className="relative w-full h-[500vh] bg-[#050303]">
-      {/* Sticky Screen Section */}
-      <section className="sticky top-0 w-full h-screen bg-[#050303] text-white flex flex-col justify-between py-6 px-8 md:px-16 overflow-hidden select-none">
-        {/* Background Visual (Mars Terrain/Glow) - Integrated into background */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 bg-cover bg-center opacity-[0.12] mix-blend-screen bg-[url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=2000&auto=format&fit=crop')]" />
+    <section
+      id="skills"
+      className="relative w-full min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white py-24 px-6 md:px-16 flex flex-col justify-between overflow-hidden border-t border-gray-200 dark:border-white/10 transition-colors duration-300"
+    >
+      {/* Background Spline 3D Model Scene */}
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-auto">
+        {/* Bu yerga o'zingizga yoqqan Spline 3Dscene havolasini qo'yasiz */}
+        <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
+      </div>
 
-          {/* Ambient Orange Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#ff4d00]/10 rounded-full blur-[200px]" />
+      {/* Dark/Light gradient overlay to keep text readable */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 dark:from-[#0a0a0a] dark:via-[#0a0a0a]/80 to-transparent z-1 pointer-events-none transition-colors duration-300" />
+
+      {/* Header Title */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto mb-12">
+        <div className="flex items-center space-x-2 mb-4">
+          <div className="w-4 h-[2px] bg-[#ff4d00]" />
+          <span className="text-[10px] font-mono tracking-widest text-[#ff4d00] uppercase">
+            EKSPERTIZA VA IMKONIYATLAR
+          </span>
         </div>
+        <h2 className="text-4xl sm:text-7xl font-extrabold uppercase tracking-tight text-gray-900 dark:text-white">
+          SKILLAR & TEXNOLOGIYALAR
+        </h2>
+      </div>
 
-        {/* TOP HEADER */}
-        <div className="flex justify-between items-center z-30">
-          <div className="text-xs font-mono font-bold tracking-widest text-white uppercase">
-            MARS FORGE
-          </div>
-
-          <div className="flex items-center space-x-6">
-            <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-1 text-[10px] font-mono">
-              <button className="px-3 py-1 rounded-full bg-[#ff4d00] text-white font-bold">
-                UZ
+      {/* Content Container (Tabs + Active Skills Grid) */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto">
+        {/* Left Side: Category Tabs */}
+        <div className="lg:col-span-4 flex flex-col space-y-4">
+          {skillCategories.map((category) => {
+            const isActive = category.id === activeTab;
+            return (
+              <button
+                key={category.id}
+                onClick={() => setActiveTab(category.id)}
+                className={`flex items-center justify-between p-5 rounded-xl border text-left transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "bg-gray-100 dark:bg-white/10 border-[#ff4d00] shadow-[0_0_20px_rgba(255,77,0,0.2)]"
+                    : "bg-gray-50/70 dark:bg-black/40 border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/30"
+                }`}
+              >
+                <div className="flex items-center space-x-3">
+                  {category.icon}
+                  <span className="font-bold text-base sm:text-lg tracking-wide text-gray-900 dark:text-white">
+                    {category.title}
+                  </span>
+                </div>
+                <div
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    isActive
+                      ? "bg-[#ff4d00] animate-pulse"
+                      : "bg-gray-400 dark:bg-zinc-700"
+                  }`}
+                />
               </button>
-              <button className="px-3 py-1 rounded-full text-gray-400 hover:text-white transition">
-                RU
-              </button>
-              <button className="px-3 py-1 rounded-full text-gray-400 hover:text-white transition">
-                EN
-              </button>
-            </div>
-
-            <button className="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition">
-              <div className="space-y-1">
-                <div className="w-4 h-[1.5px] bg-white" />
-                <div className="w-4 h-[1.5px] bg-white" />
-              </div>
-            </button>
-          </div>
+            );
+          })}
         </div>
 
-        {/* SUB HEADER */}
-        <div className="flex justify-between items-center z-30 text-[10px] font-mono text-gray-500">
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-[1.5px] bg-[#ff4d00]" />
-            <span className="tracking-widest uppercase">BOSQICHLAR</span>
-          </div>
-
-          <div className="tracking-widest">
-            0{activeIndex + 1} / 0{stepsData.length}
-          </div>
-        </div>
-
-        {/* MAIN TOP TITLE */}
-        <div className="z-30 text-center my-auto pt-4">
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={activeStep.id}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.4 }}
-              className="text-5xl sm:text-7xl md:text-8xl font-extralight tracking-widest text-white uppercase font-sans"
-            >
-              {activeStep.title}
-            </motion.h1>
-          </AnimatePresence>
-        </div>
-
-        {/* RIGHT SIDE VERTICAL RULER */}
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-center space-y-4 z-30 text-[9px] font-mono text-gray-600 pointer-events-none">
-          <span>010</span>
-          <span>020</span>
-          <span>030</span>
-          <span className="text-[#ff4d00] font-bold">237 —</span>
-          <span>040</span>
-          <span>050</span>
-          <span>060</span>
-        </div>
-
-        {/* CENTER CONTENT & ORBITAL ARC */}
-        <div className="relative w-full flex flex-col items-center justify-end pb-12 z-30">
-          {/* Active Step Details */}
+        {/* Right Side: Skills Details Animated Cards */}
+        <div className="lg:col-span-8 bg-gray-50/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-2xl p-6 sm:p-10 min-h-[380px] flex flex-col justify-center transition-colors duration-300">
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeStep.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35 }}
-              className="text-center max-w-lg space-y-3 mb-6 z-40 px-4"
+              key={activeTab}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
             >
-              {/* BIG ORANGE NUMBER */}
-              <div className="text-6xl sm:text-7xl font-extrabold text-[#ff4d00] font-mono tracking-tight">
-                {activeStep.number}
-              </div>
-
-              {/* Subtitle */}
-              <h3 className="text-sm sm:text-base font-bold text-white tracking-wide">
-                {activeStep.subtitle}
-              </h3>
-
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-gray-400 font-normal leading-relaxed max-w-md mx-auto">
-                {activeStep.description}
-              </p>
-
-              {/* Small Orange Down Arrow Triangle */}
-              <div className="pt-2 flex justify-center">
-                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-[#ff4d00]" />
-              </div>
+              {currentCategory.skills.map((skill, index) => (
+                <div
+                  key={index}
+                  className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-xl p-5 hover:border-[#ff4d00]/50 transition-colors group shadow-sm dark:shadow-none"
+                >
+                  <div className="flex justify-between items-center mb-2">
+                    <h4 className="font-bold text-gray-900 dark:text-white text-lg group-hover:text-[#ff4d00] transition-colors">
+                      {skill.name}
+                    </h4>
+                    <span className="font-mono text-xs text-[#ff4d00] bg-[#ff4d00]/10 px-2.5 py-1 rounded-full">
+                      {skill.level}
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-mono">
+                    {skill.desc}
+                  </p>
+                </div>
+              ))}
             </motion.div>
           </AnimatePresence>
-
-          {/* CIRCULAR ORBIT RING & RAQAMLAR (Aynan chiziq ustida va burchakda) */}
-          <div className="relative w-[380px] sm:w-[600px] md:w-[800px] h-[120px] sm:h-[180px] flex items-end justify-center pointer-events-none">
-            {/* Curved Arc Line (Ring) over planet */}
-            <div className="absolute bottom-[-220px] sm:bottom-[-320px] md:bottom-[-380px] w-[500px] sm:w-[750px] md:w-[950px] h-[500px] sm:h-[750px] md:h-[950px] rounded-full border border-white/20 pointer-events-none z-10" />
-
-            {/* Orbit Numbers around the sphere (Aynan chiziq burchagida) */}
-            <div className="absolute w-full flex justify-between items-center px-10 sm:px-24 md:px-32 bottom-2 z-20 pointer-events-auto">
-              {/* Previous Step (Left side, -25deg rotation) */}
-              <button
-                onClick={() => setActiveIndex(getPrevIndex())}
-                className="transition-all duration-300 font-mono font-black text-2xl sm:text-4xl -rotate-[25deg] text-white/80 hover:text-white transform hover:scale-110"
-              >
-                {stepsData[getPrevIndex()].number}
-              </button>
-
-              {/* Next Step (Right side, +25deg rotation) */}
-              <button
-                onClick={() => setActiveIndex(getNextIndex())}
-                className="transition-all duration-300 font-mono font-black text-2xl sm:text-4xl rotate-[25deg] text-white/80 hover:text-white transform hover:scale-110"
-              >
-                {stepsData[getNextIndex()].number}
-              </button>
-            </div>
-          </div>
         </div>
+      </div>
 
-        {/* BOTTOM FOOTER BAR */}
-        <div className="flex items-center justify-between text-[9px] font-mono text-gray-500 border-t border-white/5 pt-3 z-30">
-          <span>04 BOSQICHLAR</span>
-          <span>04 BOSQICH — 01 MAQSAD</span>
-        </div>
-      </section>
-    </div>
+      {/* Footer Info */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto text-center text-[10px] font-mono text-gray-500 tracking-widest uppercase mt-16">
+        FRONTEND ARCHITECTURE & INTERACTIVE 3D DESIGN
+      </div>
+    </section>
   );
 };

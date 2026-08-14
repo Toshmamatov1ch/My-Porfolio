@@ -12,15 +12,15 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#0a0a0a] text-white border-t border-zinc-800 pt-16 pb-8 px-6 md:px-16 font-sans">
+    <footer className="bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white border-t border-gray-200 dark:border-zinc-800 pt-16 pb-8 px-6 md:px-16 font-sans transition-colors duration-300">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
         {/* 1. Yangiliklarga obuna bo'lish */}
         <div className="lg:col-span-4 flex flex-col justify-between">
           <div>
-            <span className="text-xs tracking-widest text-zinc-400 uppercase font-semibold">
+            <span className="text-xs tracking-widest text-gray-500 dark:text-zinc-400 uppercase font-semibold">
               YANGILIKLARGA OBUNA
             </span>
-            <h3 className="text-xl font-medium mt-3 mb-6 text-zinc-200 leading-snug">
+            <h3 className="text-xl font-medium mt-3 mb-6 text-gray-800 dark:text-zinc-200 leading-snug">
               Yangi loyihalar va dizayn yangiliklaridan birinchilardan bo'ling.
             </h3>
 
@@ -33,22 +33,22 @@ export const Footer: React.FC = () => {
                 placeholder="Email manzilingiz"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-[#121212] text-zinc-300 border border-zinc-800 px-4 py-3 text-sm rounded-l-md focus:outline-none focus:border-zinc-600 flex-1 placeholder-zinc-500"
+                className="bg-gray-50 dark:bg-[#121212] text-gray-900 dark:text-zinc-300 border border-gray-300 dark:border-zinc-800 px-4 py-3 text-sm rounded-l-md focus:outline-none focus:border-gray-500 dark:focus:border-zinc-600 flex-1 placeholder-gray-400 dark:placeholder-zinc-500 transition-colors"
                 required
               />
               <button
                 type="submit"
-                className="bg-[#ff4d00] hover:bg-[#e04400] text-white font-bold text-xs tracking-wider px-6 py-3.5 rounded-r-md transition-colors duration-200 uppercase"
+                className="bg-[#ff4d00] hover:bg-[#e04400] text-white font-bold text-xs tracking-wider px-6 py-3.5 rounded-r-md transition-colors duration-200 uppercase cursor-pointer"
               >
                 OBUNA
               </button>
             </form>
 
-            <p className="text-xs text-zinc-500 mt-3">
+            <p className="text-xs text-gray-500 dark:text-zinc-500 mt-3">
               Obuna bo'lish orqali{" "}
               <a
                 href="#privacy"
-                className="text-zinc-400 underline hover:text-white transition-colors"
+                className="text-gray-700 dark:text-zinc-400 underline hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 Maxfiylik siyosati
               </a>
@@ -59,10 +59,10 @@ export const Footer: React.FC = () => {
 
         {/* 2. Xizmatlar */}
         <div className="lg:col-span-3 lg:pl-8">
-          <span className="text-xs tracking-widest text-zinc-400 uppercase font-semibold">
+          <span className="text-xs tracking-widest text-gray-500 dark:text-zinc-400 uppercase font-semibold">
             XIZMATLAR
           </span>
-          <ul className="mt-4 space-y-3 text-sm text-zinc-300">
+          <ul className="mt-4 space-y-3 text-sm text-gray-600 dark:text-zinc-300">
             {[
               "Veb-saytlar",
               "Veb-ilovalar",
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
               <li key={index}>
                 <a
                   href={`#${service.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                 >
                   {service}
                 </a>
@@ -85,10 +85,10 @@ export const Footer: React.FC = () => {
 
         {/* 3. Navigatsiya */}
         <div className="lg:col-span-2">
-          <span className="text-xs tracking-widest text-zinc-400 uppercase font-semibold">
+          <span className="text-xs tracking-widest text-gray-500 dark:text-zinc-400 uppercase font-semibold">
             NAVIGATSIYA
           </span>
-          <ul className="mt-4 space-y-3 text-sm text-zinc-300">
+          <ul className="mt-4 space-y-3 text-sm text-gray-600 dark:text-zinc-300">
             {[
               { name: "Asosiy", href: "#home" },
               { name: "Xizmatlar", href: "#services" },
@@ -101,7 +101,7 @@ export const Footer: React.FC = () => {
               <li key={index}>
                 <a
                   href={link.href}
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                 >
                   {link.name}
                 </a>
@@ -113,37 +113,39 @@ export const Footer: React.FC = () => {
         {/* 4. Aloqa va Ijtimoiy tarmoqlar */}
         <div className="lg:col-span-3 space-y-6">
           <div>
-            <span className="text-xs tracking-widest text-zinc-400 uppercase font-semibold">
+            <span className="text-xs tracking-widest text-gray-500 dark:text-zinc-400 uppercase font-semibold">
               ALOQA
             </span>
 
             <div className="mt-4 space-y-4 text-sm">
               <div>
-                <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
+                <p className="text-xs text-gray-400 dark:text-zinc-500 uppercase tracking-wider mb-1">
                   MANZIL
                 </p>
-                <p className="text-zinc-200">Toshkent, O'zbekiston</p>
+                <p className="text-gray-800 dark:text-zinc-200">
+                  Toshkent, O'zbekiston
+                </p>
               </div>
 
               <div>
-                <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
+                <p className="text-xs text-gray-400 dark:text-zinc-500 uppercase tracking-wider mb-1">
                   EMAIL
                 </p>
                 <a
                   href="mailto:hello@marsforge.uz"
-                  className="text-zinc-200 hover:text-white transition-colors"
+                  className="text-gray-800 dark:text-zinc-200 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                   hello@marsforge.uz
                 </a>
               </div>
 
               <div>
-                <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
+                <p className="text-xs text-gray-400 dark:text-zinc-500 uppercase tracking-wider mb-1">
                   TELEFON
                 </p>
                 <a
                   href="tel:+998917851238"
-                  className="text-zinc-200 hover:text-white transition-colors font-medium"
+                  className="text-gray-800 dark:text-zinc-200 hover:text-gray-900 dark:hover:text-white transition-colors font-medium"
                 >
                   +998 91 785 12 38
                 </a>
@@ -153,7 +155,7 @@ export const Footer: React.FC = () => {
 
           {/* Ijtimoiy Tarmoqlar (SVG Ikonkalar) */}
           <div>
-            <span className="text-xs tracking-widest text-zinc-500 uppercase font-semibold block mb-3">
+            <span className="text-xs tracking-widest text-gray-400 dark:text-zinc-500 uppercase font-semibold block mb-3">
               BIZNI KUZATING
             </span>
             <div className="flex gap-3">
@@ -162,7 +164,7 @@ export const Footer: React.FC = () => {
                 href="https://t.me"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-md border border-zinc-800 bg-[#121212] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-600 transition-all duration-200"
+                className="w-10 h-10 rounded-md border border-gray-200 dark:border-zinc-800 bg-gray-50 dark:bg-[#121212] flex items-center justify-center text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-zinc-600 transition-all duration-200"
                 aria-label="Telegram"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -175,7 +177,7 @@ export const Footer: React.FC = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-md border border-zinc-800 bg-[#121212] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-600 transition-all duration-200"
+                className="w-10 h-10 rounded-md border border-gray-200 dark:border-zinc-800 bg-gray-50 dark:bg-[#121212] flex items-center justify-center text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-zinc-600 transition-all duration-200"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -188,7 +190,7 @@ export const Footer: React.FC = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-md border border-zinc-800 bg-[#121212] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-600 transition-all duration-200"
+                className="w-10 h-10 rounded-md border border-gray-200 dark:border-zinc-800 bg-gray-50 dark:bg-[#121212] flex items-center justify-center text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-zinc-600 transition-all duration-200"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -201,11 +203,13 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Pastki qism */}
-      <div className="max-w-7xl mx-auto pt-8 border-t border-zinc-900 flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-500 gap-4">
+      <div className="max-w-7xl mx-auto pt-8 border-t border-gray-200 dark:border-zinc-900 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 dark:text-zinc-500 gap-4">
         <p>© 2026 | MARS FORGE</p>
         <p className="tracking-widest uppercase">
           YARATUVCHI{" "}
-          <span className="text-zinc-200 font-bold ml-1">HAQIJONOV-DEV</span>
+          <span className="text-gray-800 dark:text-zinc-200 font-bold ml-1">
+            HAQIJONOV-DEV
+          </span>
         </p>
       </div>
     </footer>
