@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Spline from "@splinetool/react-spline";
-import {
-  Code2,
-  Layout,
-  Cpu,
-  Globe,
-  Server,
-  Database,
-  CpuIcon,
-} from "lucide-react";
+import { Layout, Cpu, Globe } from "lucide-react";
 
 interface SkillCategory {
   id: string;

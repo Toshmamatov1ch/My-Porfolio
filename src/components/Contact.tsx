@@ -65,7 +65,7 @@ export const Contact: React.FC = () => {
                     href="mailto:diyorbek.toshmamatov@gmail.com"
                     className="text-base font-semibold hover:text-[#ff4d00] transition-colors"
                   >
-                    diyorbek.toshmamatov@gmail.com
+                    dtoshmamatov77@gmail.com
                   </a>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export const Contact: React.FC = () => {
                     JOYLASHUV
                   </span>
                   <p className="text-base font-semibold text-gray-900 dark:text-white">
-                    Toshkent, O'zbekiston
+                    Fergana, O'zbekiston
                   </p>
                 </div>
               </div>
@@ -93,7 +93,7 @@ export const Contact: React.FC = () => {
                     TELEGRAM
                   </span>
                   <a
-                    href="https://t.me"
+                    href="https://t.me/Devid_IT"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-base font-semibold hover:text-[#ff4d00] transition-colors flex items-center gap-1"

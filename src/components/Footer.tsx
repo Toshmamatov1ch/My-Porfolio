@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
                   href="tel:+998917851238"
                   className="text-gray-800 dark:text-zinc-200 hover:text-gray-900 dark:hover:text-white transition-colors font-medium"
                 >
-                  +998 91 785 12 38
+                  +998 88 930 05 09
                 </a>
               </div>
             </div>
@@ -161,7 +161,7 @@ export const Footer: React.FC = () => {
             <div className="flex gap-3">
               {/* Telegram */}
               <a
-                href="https://t.me"
+                href="https://t.me/Devid_IT"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 rounded-md border border-gray-200 dark:border-zinc-800 bg-gray-50 dark:bg-[#121212] flex items-center justify-center text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-zinc-600 transition-all duration-200"
@@ -187,7 +187,7 @@ export const Footer: React.FC = () => {
 
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/feed/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 rounded-md border border-gray-200 dark:border-zinc-800 bg-gray-50 dark:bg-[#121212] flex items-center justify-center text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-zinc-600 transition-all duration-200"
@@ -204,11 +204,11 @@ export const Footer: React.FC = () => {
 
       {/* Pastki qism */}
       <div className="max-w-7xl mx-auto pt-8 border-t border-gray-200 dark:border-zinc-900 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 dark:text-zinc-500 gap-4">
-        <p>© 2026 | MARS FORGE</p>
+        <p>© 2026 | DEVID IT</p>
         <p className="tracking-widest uppercase">
           YARATUVCHI{" "}
           <span className="text-gray-800 dark:text-zinc-200 font-bold ml-1">
-            HAQIJONOV-DEV
+            DIYORBEK-DEV
           </span>
         </p>
       </div>
