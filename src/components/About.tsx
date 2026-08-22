@@ -4,7 +4,7 @@ import { Code2, Cpu, Rocket } from "lucide-react";
 
 export const About: React.FC = () => {
   const stats = [
-    { label: "YILLIK TAJRIBA", value: "08+" },
+    { label: "YILLIK TAJRIBA", value: "1+" },
     { label: "MUVAFFAQIYATLI LOYIHALAR", value: "61+" },
     { label: "MIJOZLAR MAMNUNIYATI", value: "100%" },
   ];
