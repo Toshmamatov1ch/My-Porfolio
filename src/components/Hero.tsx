@@ -41,7 +41,7 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="max-w-5xl"
         >
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.95] text-gray-900 dark:text-white drop-shadow-md">
+          <h1 className="text-3xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.95] text-gray-900 dark:text-white drop-shadow-md">
             DIYORBEK TOSHMAMATOV <br />
             {/* 3. Dinamik matnli qism (react-simple-typewriter yordamida) */}
             {/* 3. Dinamik matnli qism (sekinlashtirilgan tezlik bilan) */}

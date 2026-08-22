@@ -74,21 +74,21 @@ export const HeaderNav: React.FC = () => {
         <header className="fixed top-0 left-0 w-full z-990 flex justify-between items-center px-6 md:px-12 py-6 pointer-events-none transition-opacity duration-300">
           <div className="flex items-center space-x-3 pointer-events-auto bg-white/80 dark:bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-gray-200 dark:border-white/10 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#ff4d00] animate-ping" />
-            <span className="text-xs md:text-sm text-gray-900 dark:text-white font-mono uppercase tracking-wider font-semibold">
+            <span className="text-[10px] md:text-sm text-gray-900 dark:text-white font-mono uppercase tracking-wider font-semibold">
               DIYORBEK TOSHMAMATOV — FRONTEND DEVELOPER
             </span>
           </div>
 
           <div className="flex items-center space-x-6 pointer-events-auto">
             <span className="hidden md:block font-mono text-xs text-gray-500 dark:text-gray-400 tracking-widest uppercase">
-              TASHKENT, UZBEKISTAN
+              FERGANA, UZBEKISTAN
             </span>
           </div>
         </header>
       )}
 
       {/* BURGER MENU & THEME TOGGLE BUTTONS CONTAINER */}
-      <div className="fixed top-6 right-6 md:right-12 z-999 flex items-center space-x-3">
+      <div className="fixed top-20 right-6 md:right-12 z-999 flex items-center space-x-3">
         {/* Tema almashtiruvchi tugma */}
         <button
           onClick={toggleTheme}
@@ -239,7 +239,7 @@ export const HeaderNav: React.FC = () => {
                   href="mailto:hello@marsforge.uz"
                   className="text-sm md:text-base font-semibold hover:underline"
                 >
-                  hello@marsforge.uz
+                  diyorbek.dev
                 </a>
               </div>
 
